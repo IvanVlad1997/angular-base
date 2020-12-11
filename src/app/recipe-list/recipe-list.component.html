@@ -1,0 +1,9 @@
+<div fxLayout="row wrap" fxLayoutAlign="center center" >
+  <div fxFlex="100" fxLayoutAlign="center center" >
+    <button mat-raised-button color="primary">New Recipe</button>
+  </div>
+  <mat-list fxFlex="80" fxLayout="row wrap" fxLayoutAlign="start center" *ngIf="recipes">
+      <app-recipe-item  *ngFor="let recipe of recipes" [recipe]="recipe" (click)="onSelected(recipe)" class="min-card-width"></app-recipe-item>
+  </mat-list>
+</div>
+

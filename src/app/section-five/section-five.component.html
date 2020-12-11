@@ -1,0 +1,12 @@
+<div fxLayout="row wrap" fxLayoutAlign="start center">
+  <app-form-fields fxFlex="100" (serverCreated)="onServerAdded($event)"
+                   (bluePrintCreated)="onBlueprintAdded($event)"
+  ></app-form-fields>
+  <mat-list fxFlex="100" >
+    <mat-list-item *ngFor="let serverElement of serverElements" class="mat-list-item-style">
+      <app-show-list [element]="serverElement" fxFlex="100"></app-show-list>
+    </mat-list-item>
+  </mat-list>
+</div>
+
+

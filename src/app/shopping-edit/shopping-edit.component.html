@@ -1,0 +1,28 @@
+<div>
+  <form (submit)="addIngredient()" #form  fxLayout="row wrap" fxLayoutAlign="space-around center">
+    <mat-form-field fxFlex="70%" color="accent">
+      <mat-label>Name</mat-label>
+      <input name="username" type="text" minlength="2" matInput autocomplete="off" required [(ngModel)]="name" #NameModel="ngModel"/>
+      <mat-error *ngIf="NameModel.errors">
+        <ng-container *ngFor="let item of NameModel.errors | keyvalue">
+          <p *ngIf="item.key === 'required'">Name is required</p>
+          <p *ngIf="item.key === 'minlength'">Should have more than 1 char</p>
+        </ng-container>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field fxFlex="70%" color="accent">
+      <mat-label>Amount</mat-label>
+      <input name="amount" type="number" matInput required [(ngModel)]="amount" #AmountModel="ngModel"/>
+      <mat-error *ngIf="AmountModel.errors">
+        <ng-container *ngFor="let item of AmountModel.errors | keyvalue">
+          <p *ngIf="item.key === 'required'">Amount is required</p>
+        </ng-container>
+      </mat-error>
+    </mat-form-field>
+    <div fxFlex="100" fxLayout="row" fxLayoutAlign="end center">
+      <button type="submit" matSuffix mat-raised-button color="primary" [disabled]="!form.checkValidity()">Add</button>
+      <button type="button" matSuffix mat-raised-button color="warn" >Delete</button>
+      <button type="button" matSuffix mat-raised-button color="accent" (click)="clear()">Clear</button>
+    </div>
+  </form>
+</div>

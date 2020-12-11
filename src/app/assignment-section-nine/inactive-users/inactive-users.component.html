@@ -1,0 +1,9 @@
+<div fxLayout="row wrap" fxLayoutAlign="space-around center" class="padding-top" *ngIf="inactiveUsers.length>0">
+  <h1 fxFlex="100">Inactive Users</h1>
+  <mat-list fxFlex="100" class="border-list">
+    <mat-list-item *ngFor="let inactiveUser of inactiveUsers; let id = index">
+      {{inactiveUser}}
+      <a mat-button (click)="setToActive(id)" class="button-style">Set to inactive</a>
+    </mat-list-item>
+  </mat-list>
+</div>

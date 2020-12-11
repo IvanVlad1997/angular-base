@@ -1,0 +1,9 @@
+<mat-card>
+    <mat-card-title>{{element.name}}</mat-card-title>
+    <mat-card-content>
+      <strong *ngIf="element.type === 'server'" class="server">{{element.content}}</strong>
+      <em *ngIf="element.type === 'blueprint'" class="blueprint">{{element.content}}</em>
+    </mat-card-content>
+</mat-card>
+
+

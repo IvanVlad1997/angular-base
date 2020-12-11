@@ -1,0 +1,13 @@
+<div fxLayout="row wrap" fxLayoutAlign="space-around center">
+  <div fxFlex="100" fxLayout="row" fxLayoutAlign="start center">
+    <button mat-raised-button  color="warn" (click)="onButtonToggle()" fxFlex="30">Display Details</button>
+    <p *ngIf="toggleButton" fxFlex="30" fxLayoutAlign="center">Some content</p>
+  </div>
+  <mat-list>
+    <mat-list-item *ngFor="let date of array; let index = index" [ngStyle]={background:getBackground(index)}
+                    [ngClass] = "{'white-color': index>=5}">
+      {{date}}
+    </mat-list-item>
+  </mat-list>
+</div>
+

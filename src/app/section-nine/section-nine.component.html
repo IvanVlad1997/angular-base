@@ -1,0 +1,5 @@
+<div fxLayout="row wrap" fxLayoutAlign="space-around center" >
+  <app-new-account fxFlex="100" (onAccountAdded)="addAccount($event)"></app-new-account>
+  <hr fxFlex="100">
+  <app-account fxFlex="100" *ngFor="let acc of accounts" class="app-account" [account]="acc"></app-account>
+</div>

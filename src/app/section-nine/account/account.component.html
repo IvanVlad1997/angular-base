@@ -1,0 +1,8 @@
+<div fxLayout="row wrap" fxLayoutAlign="space-around center" class="add-border" >
+  <h5 fxFlex="100">{{account.name}}</h5>
+  <hr fxFlex="100"/>
+  <p fxFlex="100"> This account is {{account.status}}</p>
+  <button mat-raised-button (click)="onSetTo('active')" >Set to active</button>
+  <button mat-raised-button (click)="onSetTo('inactive')">Set to inactive</button>
+  <button mat-raised-button (click)="onSetTo('unknown')">Set to unknown</button>
+</div>

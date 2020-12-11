@@ -1,0 +1,9 @@
+<div fxLayout="row wrap" fxLayoutAlign="start center" >
+  <app-shopping-edit fxFlex="100"></app-shopping-edit>
+  <hr fxFlex="100"/>
+  <mat-list fxFlex="100">
+      <mat-list-item *ngFor="let ingredient of ingredients">
+        {{ingredient.name}} ({{ingredient.amount}})
+      </mat-list-item>
+  </mat-list>
+</div>

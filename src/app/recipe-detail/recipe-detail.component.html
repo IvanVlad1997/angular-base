@@ -1,0 +1,36 @@
+<div fxLayout="row wrap" fxLayoutAlign="start start" class="min-height" *ngIf="selectedRecipe">
+  <mat-card fxFlex="100">
+    <mat-card-header>
+      <mat-card-title>{{selectedRecipe.name}}</mat-card-title>
+    </mat-card-header>
+   <img mat-card-image src="{{selectedRecipe.image}}">
+    <mat-card-content fxLayout="row wrap" fxLayoutAlign="start center">
+      <div fxFlex="100">{{selectedRecipe.description}}</div>
+      <div fxFlex="100">
+        <mat-list>
+          <mat-list-item *ngFor = "let ingredient of selectedRecipe.ingredients">
+            {{ingredient.name}} ({{ingredient.amount}})
+          </mat-list-item>
+        </mat-list>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-icon-button type="button" (click)="toggleButtonAction()">
+        <mat-icon svgIcon="arrow-down-thin-circle-outline"></mat-icon>
+      </button>
+      <ng-container *ngIf="toggleButton">
+        <div fxLayout="column" fxLayoutAlign="space-around center">
+          <div class="padding-buttons">
+            <button mat-flat-button color="primary" class="button-style" (click)="moveToShoppingList()">To Shopping List</button>
+          </div>
+          <div class="padding-buttons">
+            <button mat-flat-button color="primary" class="button-style" >Edit Recipe</button>
+          </div>
+          <div class="padding-buttons">
+            <button mat-flat-button color="primary" class="button-style">Delete Recipe</button>
+          </div>
+        </div>
+      </ng-container>
+    </mat-card-actions>
+  </mat-card>
+</div>

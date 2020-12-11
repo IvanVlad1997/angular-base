@@ -1,0 +1,23 @@
+<div fxLayout="row" fxLayoutAlign="space-around center" >
+  <form (submit)="addAccount()" #form  fxLayout="row wrap" fxLayoutAlign="space-around center" fxFlex="80">
+    <mat-form-field fxFlex="100%" color="accent">
+      <mat-label>Name</mat-label>
+      <input name="username" type="text" minlength="2" matInput required [(ngModel)]="name" #NameModel="ngModel"/>
+      <mat-error *ngIf="NameModel.errors">
+        <ng-container *ngFor="let item of NameModel.errors | keyvalue">
+          <p *ngIf="item.key === 'required'">Name is required</p>
+          <p *ngIf="item.key === 'minlength'">Should have more than 1 char</p>
+        </ng-container>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field fxFlex="100%" color="accent">
+      <mat-label>Status</mat-label>
+      <mat-select [(value)]="status">
+        <mat-option *ngFor="let typeOfStatus of typesOfStatus" [value]="typeOfStatus">{{ typeOfStatus }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div fxFlex="100" fxLayout="row" fxLayoutAlign="end center">
+      <button type="submit" matSuffix mat-raised-button color="primary" [disabled]="!form.checkValidity()">Add</button>
+    </div>
+  </form>
+</div>

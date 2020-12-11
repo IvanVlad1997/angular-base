@@ -1,0 +1,9 @@
+<app-game-control (incrementingCounterEvent)="incrementEvent($event)"></app-game-control>
+<div fxLayout="row" fxLayoutAlign="space-around center" >
+  <mat-list>
+    <mat-list-item *ngFor="let number of numbers">
+        <app-even *ngIf="number % 2 ===0" [number]="number" fxFlex="100"></app-even>
+        <app-odd *ngIf="number % 2 ===1" [number]="number"></app-odd>
+    </mat-list-item>
+  </mat-list>
+</div>

@@ -1,0 +1,30 @@
+<form #form  fxLayout="row wrap" fxLayoutAlign="space-around center">
+  <p fxFlex="70" class="header-form" >Add new server or blueprints</p>
+  <mat-form-field fxFlex="70%" color="accent">
+    <mat-label>Server Name</mat-label>
+    <input name="serverName" type="text" minlength="2" matInput required [(ngModel)]="serverName" #ServeNameModel="ngModel" />
+    <mat-error *ngIf="ServeNameModel.errors">
+      <ng-container *ngFor="let item of ServeNameModel.errors | keyvalue">
+        <p *ngIf="item.key === 'required'">Name is required</p>
+        <p *ngIf="item.key === 'minlength'">Should have more than 1 char</p>
+      </ng-container>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field fxFlex="70%" color="accent">
+    <mat-label>Server Content</mat-label>
+    <input name="serverContent" type="text" matInput required [(ngModel)]="serverContent" #serverContentModel="ngModel" #inp/>
+    <mat-error *ngIf="serverContentModel.errors">
+      <ng-container *ngFor="let item of serverContentModel.errors | keyvalue">
+        <p *ngIf="item.key === 'required'">Server Content is required</p>
+        <p *ngIf="item.key === 'minlength'">Should have more than 1 char</p>
+      </ng-container>
+    </mat-error>
+  </mat-form-field>
+  <div fxFlex="100" fxLayout="row" fxLayoutAlign="end center">
+    <button type="submit" matSuffix mat-raised-button color="primary" [disabled]="!form.checkValidity()" (click)="onAddServer()">Add Server</button>
+    <button type="submit" matSuffix mat-raised-button color="primary" [disabled]="!form.checkValidity()" (click)="onAddBlueprint()">Add Blueprint</button>
+  </div>
+</form>
+
+
+
