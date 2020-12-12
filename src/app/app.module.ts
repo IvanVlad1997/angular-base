@@ -45,6 +45,19 @@ import {ChangeUserStatus} from './services/change-user-status';
 import {Counter} from './services/counter';
 import {RecipeService} from './services/recipe.service';
 import {ShoppingList} from './services/shopping-list';
+import { SectionElevenComponent } from './section-eleven/section-eleven.component';
+import { HomeComponent } from './section-eleven/home/home.component';
+import { ServerListComponent } from './section-eleven/server-list/server-list.component';
+import { ServerItemComponent } from './section-eleven/server-item/server-item.component';
+import { ServerEditComponent } from './section-eleven/server-edit/server-edit.component';
+import { UserListComponent } from './section-eleven/user-list/user-list.component';
+import { UserItemComponent } from './section-eleven/user-item/user-item.component';
+import {UserService} from './services/user.service';
+import {ServerService} from './services/server.service';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import {FakeAuthGuard} from './guards/fake-auth-guard';
+import {FakeAuthService} from './services/fake-auth-service';
+import { RecipeStartComponent } from './recipe-start/recipe-start.component';
 
 @NgModule({
   declarations: [
@@ -85,6 +98,24 @@ import {ShoppingList} from './services/shopping-list';
 
     InactiveUsersComponent,
 
+    SectionElevenComponent,
+
+    HomeComponent,
+
+    ServerListComponent,
+
+    ServerItemComponent,
+
+    ServerEditComponent,
+
+    UserListComponent,
+
+    UserItemComponent,
+
+    PageNotFoundComponent,
+
+    RecipeStartComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -104,7 +135,7 @@ import {ShoppingList} from './services/shopping-list';
     FormsModule,
     MatSelectModule
   ],
-  providers: [ChangeUserStatus, Counter, RecipeService, ShoppingList],
+  providers: [ChangeUserStatus, Counter, RecipeService, ShoppingList, UserService, ServerService, FakeAuthGuard, FakeAuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

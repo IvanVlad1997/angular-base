@@ -8,6 +8,15 @@ import {RecipesComponent} from '../recipes/recipes.component';
 import {ShoppingListComponent} from '../shopping-list/shopping-list.component';
 import {SectionNineComponent} from '../section-nine/section-nine.component';
 import {AssignmentSectionNineComponent} from '../assignment-section-nine/assignment-section-nine.component';
+import {SectionElevenComponent} from '../section-eleven/section-eleven.component';
+import {HomeComponent} from '../section-eleven/home/home.component';
+import {ServerListComponent} from '../section-eleven/server-list/server-list.component';
+import {UserListComponent} from '../section-eleven/user-list/user-list.component';
+import {UserItemComponent} from '../section-eleven/user-item/user-item.component';
+import {PageNotFoundComponent} from '../page-not-found/page-not-found.component';
+import {FakeAuthGuard} from '../guards/fake-auth-guard';
+import {RecipeDetailComponent} from '../recipe-detail/recipe-detail.component';
+import {RecipeStartComponent} from '../recipe-start/recipe-start.component';
 
 export const routes: Routes = [
   {
@@ -24,7 +33,17 @@ export const routes: Routes = [
   },
   {
     path: 'recipes',
-    component: RecipesComponent
+    component: RecipesComponent,
+    children: [
+      {
+        path: '',
+        component: RecipeStartComponent,
+      },
+      {
+        path: ':id',
+        component: RecipeDetailComponent,
+      }
+    ]
   },
   {
     path: 'shopping-list',
@@ -41,5 +60,42 @@ export const routes: Routes = [
   {
     path: 'assignment-nine',
     component: AssignmentSectionNineComponent
+  },
+  {
+    path: 'section-eleven',
+    component: SectionElevenComponent,
+    children: [
+      {
+        path: '',
+        redirectTo: 'home',
+        pathMatch: 'full'
+      },
+      {
+        path: 'home',
+        component: HomeComponent,
+      },
+      {
+        path: 'servers-list',
+        canActivate: [FakeAuthGuard],
+        component: ServerListComponent,
+      },
+      {
+        path: 'users-list',
+        component: UserListComponent
+      },
+      {
+        path: 'users-list/:id',
+        component: UserItemComponent
+      }
+    ]
+  },
+  {
+    path: 'not-found',
+    component: PageNotFoundComponent
+  },
+  {
+    path: '**',
+    redirectTo: '/not-found'
   }
+
 ];

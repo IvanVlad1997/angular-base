@@ -1,4 +1,4 @@
-<div fxLayout="row wrap" fxLayoutAlign="start start" >
-  <app-recipe-list fxFlex="100" fxFlex.gt-sm></app-recipe-list>
-  <app-recipe-detail fxFlex="100" fxFlex.gt-sm="60" *ngIf="selectedRecipe" [selectedRecipe] = selectedRecipe></app-recipe-detail>
+<div fxLayout="row "  >
+  <app-recipe-list fxFlex="40" ></app-recipe-list>
+  <router-outlet fxFlex></router-outlet>
 </div>

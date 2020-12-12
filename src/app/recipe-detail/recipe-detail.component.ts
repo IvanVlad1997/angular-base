@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Recipe} from '../common/recipe';
 import {RecipeService} from '../services/recipe.service';
+import {ActivatedRoute, RouterLinkActive} from '@angular/router';
 
 @Component({
   selector: 'app-recipe-detail',
@@ -10,15 +11,22 @@ import {RecipeService} from '../services/recipe.service';
 export class RecipeDetailComponent implements OnInit {
 
 
-  constructor(recipeService: RecipeService) {
+  constructor(recipeService: RecipeService,
+              route: ActivatedRoute) {
+    this.route = route;
     this.recipeService = recipeService;
   }
 
-  @Input() selectedRecipe: Recipe;
+  selectedRecipe: Recipe;
   toggleButton: boolean = false;
   recipeService: RecipeService;
+  private route: ActivatedRoute;
 
    ngOnInit(): void {
+     this.route.params.subscribe((params) => {
+      let id: number = +params.id;
+      this.selectedRecipe = this.recipeService.getRecipe(id);
+     });
   }
 
   toggleButtonAction(): void {
@@ -28,4 +36,5 @@ export class RecipeDetailComponent implements OnInit {
   moveToShoppingList(): void {
     this.recipeService.addIngredientsToShoppingList(this.selectedRecipe.ingredients);
   }
+
 }

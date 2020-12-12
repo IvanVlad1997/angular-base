@@ -1,0 +1,5 @@
+<mat-list>
+  <mat-list-item *ngFor="let user of users" class="user-item" (click)="changeRoute(user)">
+    {{user.name}}
+  </mat-list-item>
+</mat-list>

@@ -30,6 +30,25 @@
            <span >Shopping list</span>
          </a>
     </app-sub-menu>
+      <a mat-list-item (click)="sectionEleven.toggle($event)">
+        <mat-icon mat-list-icon svgIcon="clock-time-eleven"></mat-icon>
+        <span>Section eleven</span>
+        <mat-icon [svgIcon]="sectionEleven.isHidden ? 'chevron-right' : 'chevron-down'"></mat-icon>
+      </a>
+      <app-sub-menu #sectionEleven >
+        <a mat-list-item routerLink="/section-eleven">
+          <mat-icon mat-list-icon svgIcon="home" ></mat-icon>
+          <span>Home</span>
+        </a>
+        <a mat-list-item routerLink="/section-eleven/users-list">
+          <mat-icon mat-list-icon svgIcon="account-multiple" ></mat-icon>
+          <span>Users list</span>
+        </a>
+        <a mat-list-item routerLink="/section-eleven/servers-list">
+          <mat-icon mat-list-icon svgIcon="server" ></mat-icon>
+          <span>Servers list</span>
+        </a>
+      </app-sub-menu>
       <a mat-list-item routerLink="/assignment-module-two">
         <mat-icon mat-list-icon svgIcon="bacteria"></mat-icon>
         <span >Assignment module two</span>
