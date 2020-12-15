@@ -1,0 +1,68 @@
+<div>
+  <div >
+    <div >
+      <form (submit)="onCreatePost()" #postForm="ngForm"  fxLayout="row wrap" fxLayoutAlign="space-around center">
+        <mat-form-field fxFlex="70%" color="accent">
+          <mat-label>Title</mat-label>
+          <input name="title" type="text" minlength="2" matInput autocomplete="off" required [(ngModel)]="title" #TitleModel="ngModel"/>
+          <mat-error *ngIf="TitleModel.errors">
+            <ng-container *ngFor="let item of TitleModel.errors | keyvalue">
+              <p *ngIf="item.key === 'required'">Title is required</p>
+              <p *ngIf="item.key === 'minlength'">Should have more than 1 char</p>
+            </ng-container>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field fxFlex="70%" color="accent">
+          <mat-label>Content</mat-label>
+          <input name="content" type="text" minlength="2" matInput autocomplete="off" required [(ngModel)]="content" #ContentModel="ngModel"/>
+          <mat-error *ngIf="ContentModel.errors">
+            <ng-container *ngFor="let item of ContentModel.errors | keyvalue">
+              <p *ngIf="item.key === 'required'">Content is required</p>
+              <p *ngIf="item.key === 'minlength'">Should have more than 1 char</p>
+            </ng-container>
+          </mat-error>
+        </mat-form-field>
+        <button
+          mat-raised-button
+          type="submit"
+          [disabled]="!postForm.valid"
+        >
+          Send Post
+        </button>
+      </form>
+    </div>
+  </div>
+  <hr />
+  <div >
+    <div >
+      <button mat-button  (click)="onFetchPosts()">
+        Fetch Posts
+      </button>
+      |
+      <button mat-button
+        [disabled]="loadedPosts.length < 1"
+        (click)="onClearPosts()"
+      >
+        Clear Posts
+      </button>
+    </div>
+  </div>
+  <div >
+    <div *ngIf="loadedPosts.length < 1 && !isFetching">
+      <p>No posts available!</p>
+    </div>
+    <div *ngIf="!(loadedPosts.length < 1) && !isFetching">
+      <mat-list>
+        <mat-list-item *ngFor = "let post of loadedPosts">
+          <h3>{{post.title}} </h3>
+          <p>{{post.content}} </p>
+        </mat-list-item>
+      </mat-list>
+    </div>
+    <div *ngIf="isFetching && !error">
+      Loading...
+    </div>
+      <div *ngIf="error">An error Occured! {{error}}</div>
+  </div>
+</div>

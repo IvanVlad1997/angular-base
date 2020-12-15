@@ -1,0 +1,27 @@
+<div fxLayout="row" fxLayoutAlign="space-around center" >
+  <form (submit)="submitAuth()" #form="ngForm"  fxLayout="row wrap" fxLayoutAlign="space-around center">
+    <mat-form-field fxFlex="70%" color="accent">
+      <mat-label>Email</mat-label>
+      <input name="email" type="email" minlength="2" matInput autocomplete="off" required [(ngModel)]="email" #EmailModel="ngModel"/>
+      <mat-error *ngIf="EmailModel.errors">
+        <ng-container *ngFor="let item of EmailModel.errors | keyvalue">
+          <p *ngIf="item.key === 'required'">Name is required</p>
+          <p *ngIf="item.key === 'minlength'">Should have more than 1 char</p>
+        </ng-container>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field fxFlex="70%" color="accent">
+      <mat-label>Password</mat-label>
+      <input name="password" type="password" matInput required [(ngModel)]="password" #PasswordModel="ngModel"/>
+      <mat-error *ngIf="PasswordModel.errors">
+        <ng-container *ngFor="let item of PasswordModel.errors | keyvalue">
+          <p *ngIf="item.key === 'required'">Password is required</p>
+        </ng-container>
+      </mat-error>
+    </mat-form-field>
+    <div fxFlex="100" fxLayout="row" fxLayoutAlign="end center">
+      <button type="submit" matSuffix mat-button color="primary" [disabled]="!form.valid">{{isLoginMode ? 'Login' : 'Sign up'}}</button>    |
+      <button type="button" (click)="onSwitchMode()" matSuffix mat-button color="primary" >Switch to {{isLoginMode ? 'Sign Up' : 'Login'}}</button>
+    </div>
+  </form>
+</div>

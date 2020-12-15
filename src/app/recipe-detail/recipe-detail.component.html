@@ -24,10 +24,10 @@
             <button mat-flat-button color="primary" class="button-style" (click)="moveToShoppingList()">To Shopping List</button>
           </div>
           <div class="padding-buttons">
-            <button mat-flat-button color="primary" class="button-style" >Edit Recipe</button>
+            <button mat-flat-button color="primary" class="button-style" (click)="goToEditRecipe()" >Edit Recipe</button>
           </div>
           <div class="padding-buttons">
-            <button mat-flat-button color="primary" class="button-style">Delete Recipe</button>
+            <button mat-flat-button color="primary" class="button-style" (click)="deleteRecipe(selectedRecipe.id)">Delete Recipe</button>
           </div>
         </div>
       </ng-container>

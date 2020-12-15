@@ -23,7 +23,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {MatCardModule} from '@angular/material/card';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { SectionFiveComponent } from './section-five/section-five.component';
 import { FormFieldsComponent } from './section-five/form-fields/form-fields.component';
 import { ShowListComponent } from './section-five/show-list/show-list.component';
@@ -58,6 +58,10 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import {FakeAuthGuard} from './guards/fake-auth-guard';
 import {FakeAuthService} from './services/fake-auth-service';
 import { RecipeStartComponent } from './recipe-start/recipe-start.component';
+import { RecipeEditComponent } from './recipe-edit/recipe-edit.component';
+import { HttpTestComponent } from './http-test/http-test.component';
+import {HttpTestPost} from './services/http-test-post';
+import { AuthComponent } from './auth/auth/auth.component';
 
 @NgModule({
   declarations: [
@@ -116,6 +120,12 @@ import { RecipeStartComponent } from './recipe-start/recipe-start.component';
 
     RecipeStartComponent,
 
+    RecipeEditComponent,
+
+    HttpTestComponent,
+
+    AuthComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -133,9 +143,18 @@ import { RecipeStartComponent } from './recipe-start/recipe-start.component';
     MatFormFieldModule,
     MatInputModule,
     FormsModule,
-    MatSelectModule
+    MatSelectModule,
+    ReactiveFormsModule
   ],
-  providers: [ChangeUserStatus, Counter, RecipeService, ShoppingList, UserService, ServerService, FakeAuthGuard, FakeAuthService],
+  providers: [ChangeUserStatus,
+    Counter,
+    RecipeService,
+    ShoppingList,
+    UserService,
+    ServerService,
+    FakeAuthGuard,
+    FakeAuthService,
+    HttpTestPost],
   bootstrap: [AppComponent]
 })
 export class AppModule {

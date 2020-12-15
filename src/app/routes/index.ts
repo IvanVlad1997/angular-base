@@ -17,6 +17,9 @@ import {PageNotFoundComponent} from '../page-not-found/page-not-found.component'
 import {FakeAuthGuard} from '../guards/fake-auth-guard';
 import {RecipeDetailComponent} from '../recipe-detail/recipe-detail.component';
 import {RecipeStartComponent} from '../recipe-start/recipe-start.component';
+import {RecipeEditComponent} from '../recipe-edit/recipe-edit.component';
+import {HttpTestComponent} from '../http-test/http-test.component';
+import {AuthComponent} from '../auth/auth/auth.component';
 
 export const routes: Routes = [
   {
@@ -40,8 +43,16 @@ export const routes: Routes = [
         component: RecipeStartComponent,
       },
       {
+        path: 'new',
+        component: RecipeEditComponent
+      },
+      {
         path: ':id',
         component: RecipeDetailComponent,
+      },
+      {
+        path: ':id/edit',
+        component: RecipeEditComponent
       }
     ]
   },
@@ -88,6 +99,14 @@ export const routes: Routes = [
         component: UserItemComponent
       }
     ]
+  },
+  {
+    path: 'http-test',
+    component: HttpTestComponent,
+  },
+  {
+    path: 'auth',
+    component: AuthComponent
   },
   {
     path: 'not-found',

@@ -1,6 +1,7 @@
-import {Component, OnInit, Output} from '@angular/core';
+import {Component, OnInit, Output, ViewChild} from '@angular/core';
 import {Ingredient} from '../common/ingredient';
 import {ShoppingList} from '../services/shopping-list';
+import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-shopping-edit',
@@ -27,11 +28,9 @@ export class ShoppingEditComponent implements OnInit {
       amount: this.amount
     };
     this.shoppingListService.addIngredient(newIngredient);
-    this.clear();
   }
 
-  clear(): void {
-    this.name = '';
-    this.amount = null;
+  clear(form: NgForm): void {
+    form.reset();
   }
 }

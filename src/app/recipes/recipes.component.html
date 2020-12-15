@@ -1,4 +1,7 @@
-<div fxLayout="row "  >
-  <app-recipe-list fxFlex="40" ></app-recipe-list>
-  <router-outlet fxFlex></router-outlet>
+<div fxLayout="row wrap"  >
+  <app-recipe-list fxFlex="40" fxFlex.lt-md="100" ></app-recipe-list>
+  <div fxFlex="60" fxFlex.lt-md="100">
+    <router-outlet ></router-outlet>
+  </div>
+
 </div>

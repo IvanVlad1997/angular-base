@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Recipe} from '../common/recipe';
 import {RecipeService} from '../services/recipe.service';
 import {Router} from '@angular/router';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-recipe-list',
@@ -15,12 +16,18 @@ export class RecipeListComponent implements OnInit {
     this.recipeService = recipeService;
   }
 
+  subscription: Subscription;
   recipeService: RecipeService;
   private router: Router;
   recipes: Recipe[];
 
   ngOnInit(): void {
-    this.recipes = this.recipeService.getRecipes();
+   this.subscription = this.recipeService.recipesChanged.subscribe(
+     (recipes: Recipe[]) => {
+       this.recipes = recipes
+     }
+   );
+   this.recipes = this.recipeService.getRecipes()
   }
 
   onSelected(recipe: Recipe): void {

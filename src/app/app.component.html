@@ -69,16 +69,26 @@
         <mat-icon mat-list-icon svgIcon="numeric-9-box"></mat-icon>
         <span >Assignment section nine</span>
       </a>
+      <a mat-list-item routerLink="http-test">
+        <mat-icon mat-list-icon svgIcon="circle"></mat-icon>
+        <span >Http Test</span>
+      </a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar color="primary">
-      <mat-toolbar-row fxLayout="row wrap" fxLayoutAlign="start center">
+      <mat-toolbar-row fxLayout="row wrap" fxLayoutAlign="space-between center">
         <button mat-icon-button (click)="sidenav.toggle()">
           <mat-icon svgIcon="menu"></mat-icon>
         </button>
+        <button mat-icon-button routerLink="auth">
+          <mat-icon svgIcon="login"></mat-icon>
+        </button>
       </mat-toolbar-row>
+      <div>
+      </div>
     </mat-toolbar>
+
     <div  class="padding-container">
       <router-outlet></router-outlet>
     </div>
