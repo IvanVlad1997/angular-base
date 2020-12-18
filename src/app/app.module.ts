@@ -19,7 +19,7 @@ import { ShoppingEditComponent } from './shopping-edit/shopping-edit.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule, MatIconRegistry} from '@angular/material/icon';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {MatCardModule} from '@angular/material/card';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
@@ -62,6 +62,10 @@ import { RecipeEditComponent } from './recipe-edit/recipe-edit.component';
 import { HttpTestComponent } from './http-test/http-test.component';
 import {HttpTestPost} from './services/http-test-post';
 import { AuthComponent } from './auth/auth/auth.component';
+import {Auth} from './services/auth';
+import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner/loading-spinner.component';
+import {AuthInterceptor} from './services/auth-interceptor';
+import {AuthGuard} from './guards/auth-guard';
 
 @NgModule({
   declarations: [
@@ -126,6 +130,8 @@ import { AuthComponent } from './auth/auth/auth.component';
 
     AuthComponent,
 
+    LoadingSpinnerComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -148,13 +154,21 @@ import { AuthComponent } from './auth/auth/auth.component';
   ],
   providers: [ChangeUserStatus,
     Counter,
+    Auth,
     RecipeService,
     ShoppingList,
     UserService,
     ServerService,
     FakeAuthGuard,
     FakeAuthService,
-    HttpTestPost],
+    HttpTestPost,
+    AuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

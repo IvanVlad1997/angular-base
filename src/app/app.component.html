@@ -21,7 +21,7 @@
         <mat-icon [svgIcon]="CourseAppSubmenu.isHidden ? 'chevron-right' : 'chevron-down'"></mat-icon>
       </a>
    <app-sub-menu #CourseAppSubmenu >
-         <a mat-list-item routerLink="/recipes">
+         <a mat-list-item routerLink="/recipes" *ngIf="isAuthenticated">
             <mat-icon mat-list-icon svgIcon="food" ></mat-icon>
             <span >Recipes</span>
          </a>
@@ -81,9 +81,14 @@
         <button mat-icon-button (click)="sidenav.toggle()">
           <mat-icon svgIcon="menu"></mat-icon>
         </button>
-        <button mat-icon-button routerLink="auth">
+        <div>
+        <button mat-icon-button routerLink="auth" *ngIf="!isAuthenticated" >
           <mat-icon svgIcon="login"></mat-icon>
         </button>
+        <button mat-icon-button routerLink="auth" (click)="authService.logout()" *ngIf="isAuthenticated" >
+          <mat-icon svgIcon="logout-variant"></mat-icon>
+        </button>
+        </div>
       </mat-toolbar-row>
       <div>
       </div>

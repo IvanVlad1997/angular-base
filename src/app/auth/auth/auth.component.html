@@ -1,5 +1,11 @@
 <div fxLayout="row" fxLayoutAlign="space-around center" >
-  <form (submit)="submitAuth()" #form="ngForm"  fxLayout="row wrap" fxLayoutAlign="space-around center">
+  <div *ngIf="isLoading">
+    <app-loading-spinner></app-loading-spinner>
+  </div>
+  <div *ngIf = "error">
+    <p>{{error}}</p>
+  </div>
+  <form (submit)="submitAuth(form)" #form="ngForm"  fxLayout="row wrap" fxLayoutAlign="space-around center" *ngIf="!isLoading">
     <mat-form-field fxFlex="70%" color="accent">
       <mat-label>Email</mat-label>
       <input name="email" type="email" minlength="2" matInput autocomplete="off" required [(ngModel)]="email" #EmailModel="ngModel"/>
