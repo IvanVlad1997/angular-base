@@ -126,6 +126,46 @@
           }
         }
       }
+    },
+    "new-lib": {
+      "projectType": "library",
+      "root": "projects/new-lib",
+      "sourceRoot": "projects/new-lib/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/new-lib/tsconfig.lib.json",
+            "project": "projects/new-lib/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/new-lib/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/new-lib/src/test.ts",
+            "tsConfig": "projects/new-lib/tsconfig.spec.json",
+            "karmaConfig": "projects/new-lib/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/new-lib/tsconfig.lib.json",
+              "projects/new-lib/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "udemy-angular-course"

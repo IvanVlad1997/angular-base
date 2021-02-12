@@ -11,67 +11,9 @@
       </mat-toolbar-row>
     </mat-toolbar>
     <mat-nav-list class="menu">
-      <a mat-list-item routerLink="/assignment-four">
-        <mat-icon mat-list-icon svgIcon="airballoon-outline"></mat-icon>
-        <span >Assignment four</span>
-      </a>
-      <a mat-list-item (click)="CourseAppSubmenu.toggle($event)">
-        <mat-icon mat-list-icon svgIcon="checkerboard-minus"></mat-icon>
-        <span>Course App</span>
-        <mat-icon [svgIcon]="CourseAppSubmenu.isHidden ? 'chevron-right' : 'chevron-down'"></mat-icon>
-      </a>
-   <app-sub-menu #CourseAppSubmenu >
-         <a mat-list-item routerLink="/recipes" *ngIf="isAuthenticated">
-            <mat-icon mat-list-icon svgIcon="food" ></mat-icon>
-            <span >Recipes</span>
-         </a>
-         <a mat-list-item routerLink="/shopping-list">
-           <mat-icon mat-list-icon svgIcon="cart-outline" ></mat-icon>
-           <span >Shopping list</span>
-         </a>
-    </app-sub-menu>
-      <a mat-list-item (click)="sectionEleven.toggle($event)">
-        <mat-icon mat-list-icon svgIcon="clock-time-eleven"></mat-icon>
-        <span>Section eleven</span>
-        <mat-icon [svgIcon]="sectionEleven.isHidden ? 'chevron-right' : 'chevron-down'"></mat-icon>
-      </a>
-      <app-sub-menu #sectionEleven >
-        <a mat-list-item routerLink="/section-eleven">
-          <mat-icon mat-list-icon svgIcon="home" ></mat-icon>
-          <span>Home</span>
-        </a>
-        <a mat-list-item routerLink="/section-eleven/users-list">
-          <mat-icon mat-list-icon svgIcon="account-multiple" ></mat-icon>
-          <span>Users list</span>
-        </a>
-        <a mat-list-item routerLink="/section-eleven/servers-list">
-          <mat-icon mat-list-icon svgIcon="server" ></mat-icon>
-          <span>Servers list</span>
-        </a>
-      </app-sub-menu>
-      <a mat-list-item routerLink="/assignment-module-two">
-        <mat-icon mat-list-icon svgIcon="bacteria"></mat-icon>
-        <span >Assignment module two</span>
-      </a>
-      <a mat-list-item routerLink="">
-        <mat-icon mat-list-icon svgIcon="biohazard"></mat-icon>
-        <span >Screen base</span>
-      </a>
-      <a mat-list-item routerLink="section-five">
-        <mat-icon mat-list-icon svgIcon="numeric-5-box"></mat-icon>
-        <span >Section five</span>
-      </a>
-      <a mat-list-item routerLink="section-nine">
-        <mat-icon mat-list-icon svgIcon="numeric-9-box"></mat-icon>
-        <span >Section nine</span>
-      </a>
-      <a mat-list-item routerLink="assignment-nine">
-        <mat-icon mat-list-icon svgIcon="numeric-9-box"></mat-icon>
-        <span >Assignment section nine</span>
-      </a>
-      <a mat-list-item routerLink="http-test">
-        <mat-icon mat-list-icon svgIcon="circle"></mat-icon>
-        <span >Http Test</span>
+      <a mat-list-item routerLink="/frontend">
+        <mat-icon mat-list-icon svgIcon="airballoon"></mat-icon>
+        <span >Frontend</span>
       </a>
     </mat-nav-list>
   </mat-sidenav>
@@ -81,6 +23,7 @@
         <button mat-icon-button (click)="sidenav.toggle()">
           <mat-icon svgIcon="menu"></mat-icon>
         </button>
+<!--        <ng-container *ngTemplateOutlet="header"></ng-container>-->
         <div>
         <button mat-icon-button routerLink="auth" *ngIf="!isAuthenticated" >
           <mat-icon svgIcon="login"></mat-icon>
@@ -93,9 +36,8 @@
       <div>
       </div>
     </mat-toolbar>
-
     <div  class="padding-container">
-      <router-outlet></router-outlet>
+      <router-outlet (activate)="componentChangeed($event)" (deactivate)="clearComponent()"></router-outlet>
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>

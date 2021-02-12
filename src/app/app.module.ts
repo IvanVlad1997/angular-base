@@ -66,6 +66,22 @@ import {Auth} from './services/auth';
 import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner/loading-spinner.component';
 import {AuthInterceptor} from './services/auth-interceptor';
 import {AuthGuard} from './guards/auth-guard';
+import { FrontendComponent } from './frontend/frontend.component';
+import { PostsComponent } from './frontend/post-list/posts.component';
+import { PostCreateComponent } from './frontend/post-create/post-create.component';
+import {MatExpansionModule} from '@angular/material/expansion'
+import {PostService} from './frontend/services/post';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { FullcalendarComponent } from './fullcalendar/fullcalendar.component';
+import {FullCalendarModule} from '@fullcalendar/angular';
+import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin
+import interactionPlugin from '@fullcalendar/interaction'; // a plugin
+
+FullCalendarModule.registerPlugins([ // register FullCalendar plugins
+  dayGridPlugin,
+  interactionPlugin
+]);
+
 
 @NgModule({
   declarations: [
@@ -132,6 +148,14 @@ import {AuthGuard} from './guards/auth-guard';
 
     LoadingSpinnerComponent,
 
+    FrontendComponent,
+
+    PostsComponent,
+
+    PostCreateComponent,
+
+    FullcalendarComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -150,7 +174,10 @@ import {AuthGuard} from './guards/auth-guard';
     MatInputModule,
     FormsModule,
     MatSelectModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatExpansionModule,
+    MatProgressSpinnerModule,
+    FullCalendarModule,
   ],
   providers: [ChangeUserStatus,
     Counter,
@@ -167,7 +194,8 @@ import {AuthGuard} from './guards/auth-guard';
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true
-    }
+    },
+    PostService
   ],
   bootstrap: [AppComponent]
 })

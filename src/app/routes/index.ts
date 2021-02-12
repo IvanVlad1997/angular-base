@@ -21,11 +21,33 @@ import {RecipeEditComponent} from '../recipe-edit/recipe-edit.component';
 import {HttpTestComponent} from '../http-test/http-test.component';
 import {AuthComponent} from '../auth/auth/auth.component';
 import {AuthGuard} from '../guards/auth-guard';
+import {FrontendComponent} from '../frontend/frontend.component';
+import {PostCreateComponent} from '../frontend/post-create/post-create.component';
+import {PostsComponent} from '../frontend/post-list/posts.component';
+import {FullcalendarComponent} from '../fullcalendar/fullcalendar.component';
 
 export const routes: Routes = [
   {
     path: '',
     component: BaseScreenComponent
+  },
+  {
+    path: 'frontend',
+    component: FrontendComponent,
+    children: [
+      {
+        path: '',
+        component: PostsComponent,
+      },
+      {
+        path: 'create',
+        component: PostCreateComponent
+      },
+      {
+        path: 'edit/:postId',
+        component: PostCreateComponent
+      },
+    ]
   },
   {
     path: 'assignment-four',
@@ -101,6 +123,10 @@ export const routes: Routes = [
         component: UserItemComponent
       }
     ]
+  },
+  {
+    path: 'fullcalendar',
+    component: FullcalendarComponent
   },
   {
     path: 'http-test',

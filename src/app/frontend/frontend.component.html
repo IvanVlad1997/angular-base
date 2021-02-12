@@ -1,0 +1,15 @@
+<mat-card>
+  <router-outlet></router-outlet>
+</mat-card>
+<ng-template #header>
+  <div fxLayout="row" fxLayoutAlign="space-around center" >
+      <div>Full Stack Course</div>
+  </div>
+  <div mat-list-item routerLink="/frontend">
+    <mat-icon mat-list-icon svgIcon="clipboard-list"></mat-icon>
+
+  </div>
+  <div mat-list-item routerLink="create">
+    <mat-icon mat-list-icon svgIcon="plus"></mat-icon>
+  </div>
+</ng-template>
